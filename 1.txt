@@ -1,0 +1,6 @@
+i can define the world as a grid..
+
+/ like a matrix. 
+starting from 00 position which would be the first block
+and last could be anything ex 10, 10
+is this how world are defined 
