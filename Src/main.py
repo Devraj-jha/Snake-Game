@@ -50,10 +50,26 @@ direction = 1
 
 running = True
 
+SNAKE_UPDATE = pygame.USEREVENT
+pygame.time.set_timer(SNAKE_UPDATE,200)
 while running:
     for event in pygame.event.get():
+        if event.type == SNAKE_UPDATE:
+            snake.update()
         if event.type == pygame.QUIT:
             running = False
+
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_UP and snake.direction != Vector2(0,1):
+                snake.direction = Vector2(0,-1)    
+            if event.key == pygame.K_DOWN and snake.direction != Vector2(0,-1):
+                snake.direction = Vector2(0,1)    
+            if event.key == pygame.K_LEFT and snake.direction != Vector2(1,0):
+                snake.direction = Vector2(-1,0)    
+            if event.key == pygame.K_RIGHT and snake.direction != Vector2(-1,0):
+                snake.direction = Vector2(1,0)    
+            
+                
 
     alpha += fade_speed * direction
 
@@ -66,7 +82,7 @@ while running:
         direction = 1
 
     food_surface.set_alpha(alpha)
-    snake.update()
+
     screen.fill(GREEN)
 
     food.draw()
