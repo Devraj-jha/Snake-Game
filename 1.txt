@@ -4,3 +4,10 @@ i can define the world as a grid..
 starting from 00 position which would be the first block
 and last could be anything ex 10, 10
 is this how world are defined 
+
+3 things are required
+game loop 
+Event handling. -> all the keypresses etc
+updating position 
+==> updating the positon of the game objects
+drawing objects. -> new position
