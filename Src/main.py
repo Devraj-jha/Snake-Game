@@ -1,5 +1,6 @@
 import pygame
 from pygame.math import Vector2
+import random
 pygame.init()
 
 GREEN = (173,204,96)
@@ -10,11 +11,17 @@ numbers_of_cells = 25
 
 class Food:
     def __init__(self):
-        self.position = Vector2(5,6)
+        self.position = self.generate_random_pos()
 
     def draw(self):
         food_rect = pygame.Rect(self.position.x *cell_size,self.position.y * cell_size,cell_size,cell_size)
         screen.blit(food_surface,food_rect)
+
+    def generate_random_pos(self): 
+        x  = random.randint(0,24)
+        y  = random.randint(0,24)
+        position = Vector2(x,y)
+        return position
 screen = pygame.display.set_mode((cell_size * numbers_of_cells,cell_size* numbers_of_cells))
 pygame.display.set_caption("Snake Game")
 clock = pygame.time.Clock()
